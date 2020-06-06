@@ -3,4 +3,9 @@
     <string name="title_main_activity">Depth of Field Calculator</string>
     <string name="select_a_lens_to_use">Select a lens to use:</string>
     <string name="title_add_lens">Lens Details</string>
+    <string name="len_image">Len Image</string>
+    <string name="make_shown_here">Make</string>
+    <string name="focalpoint">Focalpoint</string>
+    <string name="aperture">Aperture</string>
+    <string name="title_calculate_dof">Calculate DoF</string>
 </resources>

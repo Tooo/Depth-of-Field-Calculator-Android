@@ -6,11 +6,16 @@ public class Lens {
     private int focalLength;
     private int idIcon;
 
+
     public Lens (String make, double maxAperture, int focalLength, int idIcon) {
         this.make = make;
         this.maxAperture = maxAperture;
         this.focalLength = focalLength;
         this.idIcon = idIcon;
+    }
+
+    public String getMake() {
+        return make;
     }
 
     public double getMaxAperture() {
@@ -19,6 +24,10 @@ public class Lens {
 
     public int getFocalLength() {
         return this.focalLength;
+    }
+
+    public int getIdIcon() {
+        return idIcon;
     }
 
     @Override
