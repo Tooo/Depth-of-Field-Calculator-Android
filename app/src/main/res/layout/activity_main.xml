@@ -34,4 +34,14 @@
         app:layout_constraintVertical_bias="0.95"
         app:srcCompat="@drawable/yellow_crosshair" />
 
+    <ListView
+        android:id="@+id/listview_Lens"
+        android:layout_width="391dp"
+        android:layout_height="554dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_selectLens"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
