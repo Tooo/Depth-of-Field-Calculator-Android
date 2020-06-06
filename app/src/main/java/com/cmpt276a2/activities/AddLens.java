@@ -1,8 +1,10 @@
-package com.cmpt276a2;
+package com.cmpt276a2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.cmpt276a2.R;
 
 public class AddLens extends AppCompatActivity {
 

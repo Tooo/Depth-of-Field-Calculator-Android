@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddLens"
+        <activity android:name=".activities.AddLens"
             android:label="@string/title_add_lens">
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name=".activities.MainActivity"
             android:label="@string/title_main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
