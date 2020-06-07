@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cmpt276a2.R;
 import com.cmpt276a2.model.Lens;
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
+    // Refer to Brain Fraser video: ListView with Images and Text: Android Programming
     private class MyListAdapter extends ArrayAdapter<Lens> {
         public MyListAdapter() {
             super(MainActivity.this, R.layout.item_view, myLens.getLens());
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setupAddButton () {
+    private void setupAddButton() {
         FloatingActionButton fab = findViewById(R.id.fabAdd);
         fab.setOnClickListener(new View.OnClickListener() {
 

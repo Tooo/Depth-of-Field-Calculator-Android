@@ -19,4 +19,18 @@
     <string name="error_focal">Error: Focal needs to be a positive number</string>
     <string name="error_aperture_string">Error: Aperture is empty</string>
     <string name="error_aperture">Error: Aperture must be greater than 1.4</string>
+    <string name="near_focal_distance">Near Focal Distance</string>
+    <string name="far_focal_distance">Far Focal Distance</string>
+    <string name="depth_of_field">Depth of Field</string>
+    <string name="hyperfocal">HyperFocal</string>
+    <string name="hyperfocal_distance">Hyperfocal Distance</string>
+    <string name="far_focal">Far Focal</string>
+    <string name="len">Len</string>
+    <string name="near_focal">Near Focal</string>
+    <string name="distance_to_subject_m">Distance to subject [m]</string>
+    <string name="hint_coc">ex: 0.029</string>
+    <string name="hint_distance">ex: 1.5 for 1.5m</string>
+    <string name="photo_details_with">Photo details with</string>
+    <string name="selected_aperture">Selected aperture</string>
+    <string name="circle_of_confusion_m">Circle of Confusion [m]</string>
 </resources>

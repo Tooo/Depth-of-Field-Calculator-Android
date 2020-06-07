@@ -10,7 +10,7 @@
         android:id="@+id/txtAperture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selected aperture"
+        android:text="@string/selected_aperture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -22,7 +22,7 @@
         android:id="@+id/txtDist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Distance to subject [m]"
+        android:text="@string/distance_to_subject_m"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -34,7 +34,7 @@
         android:id="@+id/txtCoC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Circle of Confusion [m]"
+        android:text="@string/circle_of_confusion_m"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -46,7 +46,7 @@
         android:id="@+id/txtLen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Len"
+        android:text="@string/len"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -58,7 +58,7 @@
         android:id="@+id/txtPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Photo details with"
+        android:text="@string/photo_details_with"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
@@ -68,10 +68,10 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <TextView
-        android:id="@+id/txtHyperNum"
+        android:id="@+id/dof_txtHyper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="HyperFocal"
+        android:text="@string/hyperfocal"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,10 +81,10 @@
         app:layout_constraintVertical_bias="0.156" />
 
     <TextView
-        android:id="@+id/txtDoFNum"
+        android:id="@+id/dof_txtDoF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Depth of Field"
+        android:text="@string/depth_of_field"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,10 +94,10 @@
         app:layout_constraintVertical_bias="0.112" />
 
     <TextView
-        android:id="@+id/txtNearFocalNum"
+        android:id="@+id/dof_txtNearFocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Near Focal"
+        android:text="@string/near_focal"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,10 +107,10 @@
         app:layout_constraintVertical_bias="0.024" />
 
     <TextView
-        android:id="@+id/txtFarFocalNum"
+        android:id="@+id/dof_txtFarFocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Far Focal"
+        android:text="@string/far_focal"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +123,7 @@
         android:id="@+id/txtFarFocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Far Focal Distance"
+        android:text="@string/far_focal_distance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -135,7 +135,7 @@
         android:id="@+id/txtDoF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Depth of Field"
+        android:text="@string/depth_of_field"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -147,7 +147,7 @@
         android:id="@+id/txtHyper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hyperfocal Distance"
+        android:text="@string/hyperfocal_distance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -159,7 +159,7 @@
         android:id="@+id/txtNearFocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Near Focal Distance"
+        android:text="@string/near_focal_distance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
@@ -185,7 +185,7 @@
         android:id="@+id/inputCoC"
         android:layout_width="176dp"
         android:layout_height="40dp"
-        android:hint="ex: 0.029"
+        android:hint="@string/hint_coc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -197,7 +197,7 @@
         android:id="@+id/inputDist"
         android:layout_width="189dp"
         android:layout_height="40dp"
-        android:hint="ex: 1.5 for 1.5m"
+        android:hint="@string/hint_distance"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toBottomOf="@+id/inputCoC" />
 
@@ -205,12 +205,23 @@
         android:id="@+id/inputAperture"
         android:layout_width="189dp"
         android:layout_height="41dp"
-        android:hint="ex: 2.8 for F2.8"
+        android:hint="@string/hint_aperture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toBottomOf="@+id/inputDist"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toBottomOf="@+id/inputAperture" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

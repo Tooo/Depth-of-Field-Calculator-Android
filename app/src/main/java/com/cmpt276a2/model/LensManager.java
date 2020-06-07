@@ -9,6 +9,7 @@ import java.util.List;
 public class LensManager implements Iterable<Lens>{
     private List<Lens> lens = new ArrayList<>();
 
+    // Refer to Brain Fraser video: Singleton Model: Android Programming
     private static LensManager instance;
     private LensManager() {
 
