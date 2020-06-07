@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddLens.class);
+
+                // New Lens = -1
+                intent.putExtra("indexLen", -1);
                 startActivity(intent);
             }
         });

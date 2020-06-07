@@ -19,6 +19,8 @@ import com.cmpt276a2.model.LensManager;
 
 public class AddLens extends AppCompatActivity {
     private LensManager myLens;
+    private int indexLen;
+
     private String[] colours = {"Red", "Orange", "Yellow", "Green", "Blue"};
     private int[] iconList = {R.drawable.len_red, R.drawable.len_orange, R.drawable.len_yellow, R.drawable.len_green, R.drawable.len_blue};
     private int iconID;
@@ -30,9 +32,44 @@ public class AddLens extends AppCompatActivity {
 
         myLens = LensManager.getInstance();
 
+        Intent intent = getIntent();
+        indexLen = intent.getIntExtra("indexLen", 0);
+
         setupBackButton();
         setupIconSelector();
         setupSaveButton();
+
+        if (indexLen != -1) {
+            loadLens();
+        }
+    }
+
+    private void loadLens() {
+        Lens len = myLens.get(indexLen);
+
+        // Make
+        EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
+        makeInput.setText(len.getMake());
+
+        // Focal
+        EditText focalInput = (EditText)findViewById(R.id.add_inputFocal);
+        focalInput.setText("" +len.getFocalLength());
+
+        // Aperture
+        EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
+        apertureInput.setText("" + len.getMaxAperture());
+
+        Spinner iconSpinner = findViewById(R.id.add_spinIcon);
+        iconID = len.getIdIcon();
+        int index = 0;
+        for (int i = 0; i<iconList.length; i++) {
+            if (iconList.equals(iconID)) {
+                index = i;
+                break;
+            }
+        }
+        iconSpinner.setSelection(index, false);
+
     }
 
     private void setupBackButton() {

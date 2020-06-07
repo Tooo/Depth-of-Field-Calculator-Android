@@ -34,7 +34,8 @@ public class CalculateDOF extends AppCompatActivity {
         myLens = LensManager.getInstance();
         indexLen = getLen();
 
-        setupToolBar();
+        setupBackButton();
+        setupEditButton();
         setupCoC();
         setupCalculateButton();
     }
@@ -43,14 +44,14 @@ public class CalculateDOF extends AppCompatActivity {
         Intent intent = getIntent();
         int indexLen = intent.getIntExtra("indexLen", 0);
 
-        TextView textView = (TextView) findViewById(R.id.txtLen);
+        TextView textView = (TextView) findViewById(R.id.dof_txtLen);
         String lenString = myLens.get(indexLen).toString();
         textView.setText(lenString);
         return indexLen;
     }
 
-    private void setupToolBar() {
-        ImageButton btn = findViewById(R.id.imgbtnBackDof);
+    private void setupBackButton() {
+        ImageButton btn = findViewById(R.id.dof_imgbtnBackDof);
         btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -61,32 +62,45 @@ public class CalculateDOF extends AppCompatActivity {
         });
     }
 
-    private void setupCoC() {
-        EditText coCInput = (EditText)findViewById(R.id.inputCoC);
-        coCInput.setText("0.029");
-    }
-
-    private void setupCalculateButton() {
-        Button btn = findViewById(R.id.btnCalculate);
+    private void setupEditButton() {
+        ImageButton btn = findViewById(R.id.dof_imgbtnEdit);
         btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                EditText cocInput = (EditText)findViewById(R.id.inputCoC);
+                Intent intent = new Intent(CalculateDOF.this, AddLens.class);
+                intent.putExtra("indexLen", indexLen);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setupCoC() {
+        EditText coCInput = (EditText)findViewById(R.id.dof_inputCoC);
+        coCInput.setText("0.029");
+    }
+
+    private void setupCalculateButton() {
+        Button btn = findViewById(R.id.dof_btnCalculate);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                EditText cocInput = (EditText)findViewById(R.id.dof_inputCoC);
                 String cocString = cocInput.getText().toString();
                 double coc = Double.parseDouble(cocString);
 
-                EditText distanceInput = (EditText)findViewById(R.id.inputDist);
+                EditText distanceInput = (EditText)findViewById(R.id.dof_inputDist);
                 String distanceString = distanceInput.getText().toString();
                 double distance = Double.parseDouble(distanceString);
 
-                EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
+                EditText apertureInput = (EditText)findViewById(R.id.dof_inputAperture);
                 String apertureString = apertureInput.getText().toString();
                 double aperture = Double.parseDouble(apertureString);
 
                 calculate(coc, distance, aperture);
 
-                int dofTextID[] = {R.id.dof_txtNearFocal, R.id.dof_txtFarFocal, R.id.dof_txtHyper, R.id.dof_txtDoF};
+                int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
                 double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
 
                 for (int i = 0; i < 4; i++) {

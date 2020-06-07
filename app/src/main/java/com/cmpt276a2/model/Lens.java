@@ -18,16 +18,32 @@ public class Lens {
         return make;
     }
 
+    public void setMake(String make) {
+        this.make = make;
+    }
+
     public double getMaxAperture() {
-        return this.maxAperture;
+        return maxAperture;
+    }
+
+    public void setMaxAperture(double maxAperture) {
+        this.maxAperture = maxAperture;
     }
 
     public int getFocalLength() {
-        return this.focalLength;
+        return focalLength;
+    }
+
+    public void setFocalLength(int focalLength) {
+        this.focalLength = focalLength;
     }
 
     public int getIdIcon() {
         return idIcon;
+    }
+
+    public void setIdIcon(int idIcon) {
+        this.idIcon = idIcon;
     }
 
     @Override

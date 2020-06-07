@@ -12,7 +12,6 @@
     <string name="focal_length">Focal Length [mm]</string>
     <string name="hint_focal">ex: 200 for 200mm</string>
     <string name="hint_aperture">ex: 2.8 for F2.8</string>
-    <string name="save">Save</string>
     <string name="error_make">Error: Make is empty</string>
     <string name="error_focal_string">Error: Focal Length is empty</string>
     <string name="error_focal">Error: Focal needs to be a positive number</string>
