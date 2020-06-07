@@ -6,41 +6,115 @@
     android:layout_height="match_parent"
     tools:context=".activities.CalculateDOF">
 
-    <TextView
-        android:id="@+id/txtAperture"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolDoF"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgbtnBackDof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/selected_aperture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leftLine"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:background="@null"
+        android:contentDescription="@string/backarrowdof"
+        app:layout_constraintBottom_toBottomOf="@+id/toolDoF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:srcCompat="@drawable/ic_arrowback_blue" />
 
     <TextView
-        android:id="@+id/txtDist"
+        android:id="@+id/txtTitleDof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/distance_to_subject_m"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/leftLine"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.324" />
+        android:text="@string/title_calculate_dof"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/toolDoF"
+        app:layout_constraintEnd_toEndOf="@+id/toolDoF"
+        app:layout_constraintStart_toStartOf="@+id/toolDoF"
+        app:layout_constraintTop_toTopOf="@+id/toolDoF" />
 
     <TextView
-        android:id="@+id/txtCoC"
+        android:id="@+id/txtHyper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/circle_of_confusion_m"
+        android:text="@string/hyperfocal_distance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.261" />
+
+    <TextView
+        android:id="@+id/txtFarFocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/far_focal_distance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/leftLine"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <TextView
+        android:id="@+id/dof_txtFarFocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/far_focal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168" />
+
+    <TextView
+        android:id="@+id/dof_txtHyper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyperfocal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.259" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toBottomOf="@+id/add_inputAperture" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/add_inputAperture"
+        android:layout_width="189dp"
+        android:layout_height="41dp"
+        android:hint="@string/hint_aperture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toBottomOf="@+id/inputDist"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtLen"
@@ -49,10 +123,48 @@
         android:text="@string/len"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.304" />
+
+    <TextView
+        android:id="@+id/dof_txtDoF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/depth_of_field"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.216" />
+
+    <TextView
+        android:id="@+id/add_txtAperture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_aperture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/leftLine"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <TextView
+        android:id="@+id/dof_txtNearFocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/near_focal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128" />
 
     <TextView
         android:id="@+id/txtPhoto"
@@ -65,71 +177,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.304" />
 
     <TextView
-        android:id="@+id/dof_txtHyper"
+        android:id="@+id/txtDist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hyperfocal"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
-
-    <TextView
-        android:id="@+id/dof_txtDoF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/depth_of_field"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
-
-    <TextView
-        android:id="@+id/dof_txtNearFocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/near_focal"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
-
-    <TextView
-        android:id="@+id/dof_txtFarFocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/far_focal"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
-
-    <TextView
-        android:id="@+id/txtFarFocal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/far_focal_distance"
+        android:text="@string/distance_to_subject_m"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintVertical_bias="0.427" />
 
     <TextView
         android:id="@+id/txtDoF"
@@ -141,19 +201,41 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
+        app:layout_constraintVertical_bias="0.216" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputDist"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/hint_distance"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toBottomOf="@+id/inputCoC" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inputCoC"
+        android:layout_width="176dp"
+        android:layout_height="40dp"
+        android:hint="@string/hint_coc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.364" />
 
     <TextView
-        android:id="@+id/txtHyper"
+        android:id="@+id/txtCoC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hyperfocal_distance"
+        android:text="@string/circle_of_confusion_m"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/leftLine"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintVertical_bias="0.365" />
 
     <TextView
         android:id="@+id/txtNearFocal"
@@ -165,7 +247,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.128" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftLine"
@@ -180,48 +262,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="228dp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputCoC"
-        android:layout_width="176dp"
-        android:layout_height="40dp"
-        android:hint="@string/hint_coc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputDist"
-        android:layout_width="189dp"
-        android:layout_height="40dp"
-        android:hint="@string/hint_distance"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toBottomOf="@+id/inputCoC" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/inputAperture"
-        android:layout_width="189dp"
-        android:layout_height="41dp"
-        android:hint="@string/hint_aperture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toBottomOf="@+id/inputDist"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnCalculate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Calculate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toBottomOf="@+id/inputAperture" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

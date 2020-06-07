@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.cmpt276a2.R;
@@ -33,6 +33,8 @@ public class CalculateDOF extends AppCompatActivity {
 
         myLens = LensManager.getInstance();
         indexLen = getLen();
+
+        setupToolBar();
         setupCoC();
         setupCalculateButton();
     }
@@ -44,8 +46,19 @@ public class CalculateDOF extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.txtLen);
         String lenString = myLens.get(indexLen).toString();
         textView.setText(lenString);
-
         return indexLen;
+    }
+
+    private void setupToolBar() {
+        ImageButton btn = findViewById(R.id.imgbtnBackDof);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CalculateDOF.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupCoC() {
@@ -67,7 +80,7 @@ public class CalculateDOF extends AppCompatActivity {
                 String distanceString = distanceInput.getText().toString();
                 double distance = Double.parseDouble(distanceString);
 
-                EditText apertureInput = (EditText)findViewById(R.id.inputAperture);
+                EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
                 String apertureString = apertureInput.getText().toString();
                 double aperture = Double.parseDouble(apertureString);
 
@@ -96,6 +109,7 @@ public class CalculateDOF extends AppCompatActivity {
     }
 
     // Convert to 2 decimal
+    // Code: Assignment 1 - CameraTextUI.java
     private String formatM(double distanceInM) {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(distanceInM);

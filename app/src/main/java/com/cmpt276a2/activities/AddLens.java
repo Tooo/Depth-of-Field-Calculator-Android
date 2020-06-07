@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.cmpt276a2.R;
@@ -23,12 +24,24 @@ public class AddLens extends AppCompatActivity {
 
         myLens = LensManager.getInstance();
 
+        setupBackButton();
         setupSaveButton();
-        setupCancelButton();
+    }
+
+    private void setupBackButton() {
+        ImageButton btn = findViewById(R.id.add_imgbtnBack);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddLens.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupSaveButton() {
-        Button btn = findViewById(R.id.btnSave);
+        ImageButton btn = findViewById(R.id.add_imgbtnSave);
         btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -36,7 +49,7 @@ public class AddLens extends AppCompatActivity {
                 String message;
 
                 // Make
-                EditText makeInput = (EditText)findViewById(R.id.inputMake);
+                EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
                 String make = makeInput.getText().toString();
 
                 if (make.length() == 0 ) {
@@ -46,7 +59,7 @@ public class AddLens extends AppCompatActivity {
                 }
 
                 // Focal
-                EditText makeFocal = (EditText)findViewById(R.id.inputFocal);
+                EditText makeFocal = (EditText)findViewById(R.id.add_inputFocal);
                 String focalString = makeFocal.getText().toString();
 
                 if (focalString.length() == 0 ) {
@@ -63,7 +76,7 @@ public class AddLens extends AppCompatActivity {
                 }
 
                 // Aperture
-                EditText makeAperture = (EditText)findViewById(R.id.inputAperture);
+                EditText makeAperture = (EditText)findViewById(R.id.add_inputAperture);
                 String apertureString = makeAperture.getText().toString();
 
                 if (apertureString.length() == 0 ) {
@@ -80,18 +93,6 @@ public class AddLens extends AppCompatActivity {
 
                 myLens.add(new Lens(make, aperture, focal, R.drawable.len_red));
 
-                Intent intent = new Intent(AddLens.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void setupCancelButton() {
-        Button btn = findViewById(R.id.btnCancel);
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
                 Intent intent = new Intent(AddLens.this, MainActivity.class);
                 startActivity(intent);
             }
