@@ -15,18 +15,19 @@ import android.widget.Toast;
 
 import com.cmpt276a2.R;
 import com.cmpt276a2.model.Lens;
+import com.cmpt276a2.model.LensManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Lens> myLens = new ArrayList<>();
+    private LensManager myLens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        myLens = LensManager.getInstance();
 
         populateLenList();
         populateListView();
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class MyListAdapter extends ArrayAdapter<Lens> {
         public MyListAdapter() {
-            super(MainActivity.this, R.layout.item_view, myLens);
+            super(MainActivity.this, R.layout.item_view, myLens.getLens());
         }
 
         @Override
