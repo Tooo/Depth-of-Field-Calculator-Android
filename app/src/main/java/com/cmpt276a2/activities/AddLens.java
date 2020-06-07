@@ -6,24 +6,84 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.cmpt276a2.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.cmpt276a2.model.Lens;
+import com.cmpt276a2.model.LensManager;
 
 public class AddLens extends AppCompatActivity {
+    private LensManager myLens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lens);
 
+        myLens = LensManager.getInstance();
+
         setupSaveButton();
         setupCancelButton();
     }
 
     private void setupSaveButton() {
+        Button btn = findViewById(R.id.btnSave);
+        btn.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                String message;
 
+                // Make
+                EditText makeInput = (EditText)findViewById(R.id.inputMake);
+                String make = makeInput.getText().toString();
+
+                if (make.length() == 0 ) {
+                    message = getResources().getString(R.string.error_make);
+                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Focal
+                EditText makeFocal = (EditText)findViewById(R.id.inputFocal);
+                String focalString = makeFocal.getText().toString();
+
+                if (focalString.length() == 0 ) {
+                    message = getResources().getString(R.string.error_focal_string);
+                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int focal = Integer.parseInt(focalString);
+                if (focal <= 0) {
+                    message = getResources().getString(R.string.error_focal);
+                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Aperture
+                EditText makeAperture = (EditText)findViewById(R.id.inputAperture);
+                String apertureString = makeAperture.getText().toString();
+
+                if (apertureString.length() == 0 ) {
+                    message = getResources().getString(R.string.error_focal_string);
+                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                double aperture = Double.parseDouble(apertureString);
+                if (aperture < 1.4 ) {
+                    message = getResources().getString(R.string.error_aperture);
+                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                myLens.add(new Lens(make, aperture, focal, R.drawable.len_red));
+
+                Intent intent = new Intent(AddLens.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupCancelButton() {

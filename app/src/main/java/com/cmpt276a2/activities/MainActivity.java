@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateLenList() {
-        myLens.add(new Lens("Canon", 1.8, 50, R.drawable.len_blue));
-        myLens.add(new Lens("Tamron", 2.8, 90, R.drawable.len_green));
-        myLens.add(new Lens("Sigma", 2.8, 200, R.drawable.len_orange));
-        myLens.add(new Lens("Nikon", 4, 200, R.drawable.len_yellow));
     }
 
     private void populateListView() {

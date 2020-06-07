@@ -1,5 +1,7 @@
 package com.cmpt276a2.model;
 
+import com.cmpt276a2.R;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +16,10 @@ public class LensManager implements Iterable<Lens>{
     public static LensManager getInstance() {
         if (instance == null) {
             instance = new LensManager();
+            instance.add(new Lens("Canon", 1.8, 50, R.drawable.len_blue));
+            instance.add(new Lens("Tamron", 2.8, 90, R.drawable.len_green));
+            instance.add(new Lens("Sigma", 2.8, 200, R.drawable.len_orange));
+            instance.add(new Lens("Nikon", 4, 200, R.drawable.len_yellow));
         }
         return instance;
     }

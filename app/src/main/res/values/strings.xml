@@ -14,4 +14,9 @@
     <string name="hint_aperture">ex: 2.8 for F2.8</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="error_make">Error: Make is empty</string>
+    <string name="error_focal_string">Error: Focal Length is empty</string>
+    <string name="error_focal">Error: Focal needs to be a positive number</string>
+    <string name="error_aperture_string">Error: Aperture is empty</string>
+    <string name="error_aperture">Error: Aperture must be greater than 1.4</string>
 </resources>
