@@ -56,6 +56,40 @@
         app:layout_constraintStart_toStartOf="@+id/add_tool"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/add_txtMake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/make"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_tool" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/add_inputMake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/hint_make"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_txtMake" />
+
+    <TextView
+        android:id="@+id/add_txtFocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/focal_length"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_inputMake" />
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/add_inputFocal"
         android:layout_width="match_parent"
@@ -63,25 +97,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:hint="@string/hint_focal"
-        app:layout_constraintBottom_toTopOf="@+id/add_txtAperture"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_txtFocal"
-        app:layout_constraintVertical_bias="0.111" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/add_inputAperture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:hint="@string/hint_aperture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_txtAperture" />
+        app:layout_constraintTop_toBottomOf="@+id/add_txtFocal" />
 
     <TextView
         android:id="@+id/add_txtAperture"
@@ -92,45 +111,57 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.336" />
-
-    <TextView
-        android:id="@+id/add_txtMake"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/make"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_tool"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintTop_toBottomOf="@+id/add_txtFocal"
+        app:layout_constraintVertical_bias="0.098" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/add_inputMake"
+        android:id="@+id/add_inputAperture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:hint="@string/hint_make"
-        app:layout_constraintBottom_toTopOf="@+id/add_txtFocal"
+        android:hint="@string/hint_aperture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_txtMake"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/add_txtAperture" />
 
     <TextView
-        android:id="@+id/add_txtFocal"
+        android:id="@+id/add_txtIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/focal_length"
+        android:text="@string/icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintTop_toBottomOf="@+id/add_txtAperture"
+        app:layout_constraintVertical_bias="0.113" />
+
+    <ImageView
+        android:id="@+id/add_imgLen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/len_image"
+        android:maxHeight="80dp"
+        android:maxWidth="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_txtIcon"
+        app:srcCompat="@drawable/len_red" />
+
+    <Spinner
+        android:id="@+id/add_spinIcon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/add_imgLen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/add_imgLen"
+        app:layout_constraintTop_toTopOf="@+id/add_imgLen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

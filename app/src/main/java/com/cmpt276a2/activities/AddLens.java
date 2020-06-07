@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cmpt276a2.R;
@@ -16,6 +19,9 @@ import com.cmpt276a2.model.LensManager;
 
 public class AddLens extends AppCompatActivity {
     private LensManager myLens;
+    private String[] colours = {"Red", "Orange", "Yellow", "Green", "Blue"};
+    private int[] iconList = {R.drawable.len_red, R.drawable.len_orange, R.drawable.len_yellow, R.drawable.len_green, R.drawable.len_blue};
+    private int iconID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,7 @@ public class AddLens extends AppCompatActivity {
         myLens = LensManager.getInstance();
 
         setupBackButton();
+        setupIconSelector();
         setupSaveButton();
     }
 
@@ -36,6 +43,26 @@ public class AddLens extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AddLens.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void setupIconSelector() {
+        Spinner spinner = findViewById(R.id.add_spinIcon);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(AddLens.this, android.R.layout.simple_spinner_item, colours);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ImageView imageView = findViewById(R.id.add_imgLen);
+                iconID = iconList[position];
+                imageView.setImageResource(iconID);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
@@ -91,7 +118,7 @@ public class AddLens extends AppCompatActivity {
                     return;
                 }
 
-                myLens.add(new Lens(make, aperture, focal, R.drawable.len_red));
+                myLens.add(new Lens(make, aperture, focal, iconID));
 
                 Intent intent = new Intent(AddLens.this, MainActivity.class);
                 startActivity(intent);
