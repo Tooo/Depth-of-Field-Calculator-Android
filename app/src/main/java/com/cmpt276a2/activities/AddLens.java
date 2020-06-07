@@ -63,7 +63,7 @@ public class AddLens extends AppCompatActivity {
         iconID = len.getIdIcon();
         int index = 0;
         for (int i = 0; i<iconList.length; i++) {
-            if (iconList.equals(iconID)) {
+            if (iconList[i] == iconID) {
                 index = i;
                 break;
             }
@@ -110,51 +110,27 @@ public class AddLens extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String message;
 
-                // Make
                 EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
                 String make = makeInput.getText().toString();
 
-                if (make.length() == 0 ) {
-                    message = getResources().getString(R.string.error_make);
-                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Focal
                 EditText makeFocal = (EditText)findViewById(R.id.add_inputFocal);
                 String focalString = makeFocal.getText().toString();
 
-                if (focalString.length() == 0 ) {
-                    message = getResources().getString(R.string.error_focal_string);
-                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
+                EditText makeAperture = (EditText)findViewById(R.id.add_inputAperture);
+                String apertureString = makeAperture.getText().toString();
+
+                // Validate values
+                String errorMessage = validateValues(make, focalString, apertureString);
+                if (errorMessage.length() != 0) {
+                    Toast.makeText(AddLens.this, errorMessage, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 int focal = Integer.parseInt(focalString);
-                if (focal <= 0) {
-                    message = getResources().getString(R.string.error_focal);
-                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Aperture
-                EditText makeAperture = (EditText)findViewById(R.id.add_inputAperture);
-                String apertureString = makeAperture.getText().toString();
-
-                if (apertureString.length() == 0 ) {
-                    message = getResources().getString(R.string.error_focal_string);
-                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 double aperture = Double.parseDouble(apertureString);
-                if (aperture < 1.4 ) {
-                    message = getResources().getString(R.string.error_aperture);
-                    Toast.makeText(AddLens.this, message, Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
+                // New or old Lens
                 if (indexLen == -1) {
                     myLens.add(new Lens(make, aperture, focal, iconID));
                 } else {
@@ -167,8 +143,43 @@ public class AddLens extends AppCompatActivity {
         });
     }
 
-    private boolean validateValues(String make, String focalString, String apertureString) {
-        return true;
+    private String validateValues(String make, String focalString, String apertureString) {
+        // Validate make
+        if (make.length() == 0 ) {
+            return getResources().getString(R.string.error_make);
+        }
+
+        // Validate focal
+        if (focalString.length() == 0 ) {
+            return getResources().getString(R.string.error_focal_empty);
+        }
+
+        try {
+            int focal = Integer.parseInt(focalString);
+            if (focal <= 0) {
+                return getResources().getString(R.string.error_focal);
+            }
+        }
+        catch (NumberFormatException e) {
+            return getResources().getString(R.string.error_focal_string);
+        }
+
+        // Validate aperture
+        if (apertureString.length() == 0 ) {
+            return getResources().getString(R.string.error_focal_empty);
+        }
+
+        try {
+            double aperture = Double.parseDouble(apertureString);
+            if (aperture < 1.4 ) {
+                return getResources().getString(R.string.error_aperture);
+            }
+        }
+        catch (NumberFormatException e) {
+            return getResources().getString(R.string.error_aperture_string);
+        }
+
+        return "";
     }
 
     private void saveOddLens(String make, int focal, double aperture) {
