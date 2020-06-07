@@ -155,11 +155,28 @@ public class AddLens extends AppCompatActivity {
                     return;
                 }
 
-                myLens.add(new Lens(make, aperture, focal, iconID));
+                if (indexLen == -1) {
+                    myLens.add(new Lens(make, aperture, focal, iconID));
+                } else {
+                    saveOddLens(make, focal, aperture);
+                }
 
                 Intent intent = new Intent(AddLens.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean validateValues(String make, String focalString, String apertureString) {
+        return true;
+    }
+
+    private void saveOddLens(String make, int focal, double aperture) {
+        Lens len = myLens.get(indexLen);
+
+        len.setMake(make);
+        len.setFocalLength(focal);
+        len.setMaxAperture(aperture);
+        len.setIdIcon(iconID);
     }
 }
