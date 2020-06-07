@@ -21,10 +21,6 @@ public class CalculateDOF extends AppCompatActivity {
     private LensManager myLens;
     private int indexLen;
 
-    private double coc;
-    private double distance;
-    private double aperture;
-
     private double hyperFocal;
     private double nearFocal;
     private double farFocal;
@@ -65,35 +61,31 @@ public class CalculateDOF extends AppCompatActivity {
             public void onClick(View view) {
                 EditText cocInput = (EditText)findViewById(R.id.inputCoC);
                 String cocString = cocInput.getText().toString();
-                coc = Double.parseDouble(cocString);
+                double coc = Double.parseDouble(cocString);
 
                 EditText distanceInput = (EditText)findViewById(R.id.inputDist);
                 String distanceString = distanceInput.getText().toString();
-                distance = Double.parseDouble(distanceString);
+                double distance = Double.parseDouble(distanceString);
 
                 EditText apertureInput = (EditText)findViewById(R.id.inputAperture);
                 String apertureString = apertureInput.getText().toString();
-                aperture = Double.parseDouble(apertureString);
+                double aperture = Double.parseDouble(apertureString);
 
-                calculate();
+                calculate(coc, distance, aperture);
 
-                TextView nearText = findViewById(R.id.dof_txtNearFocal);
-                nearText.setText(formatM(nearFocal/1000) + "m");
+                int dofTextID[] = {R.id.dof_txtNearFocal, R.id.dof_txtFarFocal, R.id.dof_txtHyper, R.id.dof_txtDoF};
+                double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
 
-                TextView farText = findViewById(R.id.dof_txtFarFocal);
-                farText.setText(formatM(farFocal/1000) + "m");
-
-                TextView hyperText = findViewById(R.id.dof_txtHyper);
-                hyperText.setText(formatM(hyperFocal/1000) + "m");
-
-                TextView dofText = findViewById(R.id.dof_txtDoF);
-                dofText.setText(formatM(depthOfField/1000) + "m");
+                for (int i = 0; i < 4; i++) {
+                    TextView textView = findViewById(dofTextID[i]);
+                    textView.setText(formatM(calculation[i]/1000) + "m");
+                }
 
             }
         });
     }
 
-    private void calculate() {
+    private void calculate(double coc, double distance, double aperture) {
         Lens len = myLens.get(indexLen);
         double distanceMM = distance*1000;
 
