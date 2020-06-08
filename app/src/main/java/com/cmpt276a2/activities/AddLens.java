@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -38,38 +39,11 @@ public class AddLens extends AppCompatActivity {
         setupBackButton();
         setupIconSelector();
         setupSaveButton();
+        setupDeleteButton();
 
         if (indexLen != -1) {
             loadLens();
         }
-    }
-
-    private void loadLens() {
-        Lens len = myLens.get(indexLen);
-
-        // Make
-        EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
-        makeInput.setText(len.getMake());
-
-        // Focal
-        EditText focalInput = (EditText)findViewById(R.id.add_inputFocal);
-        focalInput.setText("" +len.getFocalLength());
-
-        // Aperture
-        EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
-        apertureInput.setText("" + len.getMaxAperture());
-
-        Spinner iconSpinner = findViewById(R.id.add_spinIcon);
-        iconID = len.getIdIcon();
-        int index = 0;
-        for (int i = 0; i<iconList.length; i++) {
-            if (iconList[i] == iconID) {
-                index = i;
-                break;
-            }
-        }
-        iconSpinner.setSelection(index, false);
-
     }
 
     private void setupBackButton() {
@@ -189,5 +163,54 @@ public class AddLens extends AppCompatActivity {
         len.setFocalLength(focal);
         len.setMaxAperture(aperture);
         len.setIdIcon(iconID);
+    }
+
+    private void setupDeleteButton() {
+        ImageButton deleteButton = findViewById(R.id.add_imgbtnDelete);
+        if (indexLen == -1) {
+            deleteButton.setVisibility(View.GONE);
+        }
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Delete Len
+                Lens len = myLens.get(indexLen);
+                myLens.remove(len);
+
+                Intent intent = new Intent(AddLens.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    private void loadLens() {
+        Lens len = myLens.get(indexLen);
+
+        // Make
+        EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
+        makeInput.setText(len.getMake());
+
+        // Focal
+        EditText focalInput = (EditText)findViewById(R.id.add_inputFocal);
+        focalInput.setText("" +len.getFocalLength());
+
+        // Aperture
+        EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
+        apertureInput.setText("" + len.getMaxAperture());
+
+        Spinner iconSpinner = findViewById(R.id.add_spinIcon);
+        iconID = len.getIdIcon();
+        int index = 0;
+        for (int i = 0; i<iconList.length; i++) {
+            if (iconList[i] == iconID) {
+                index = i;
+                break;
+            }
+        }
+        iconSpinner.setSelection(index, false);
+
     }
 }
