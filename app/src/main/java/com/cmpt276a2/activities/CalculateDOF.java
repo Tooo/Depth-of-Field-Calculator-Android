@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cmpt276a2.R;
 import com.cmpt276a2.model.DOFCalculator;
@@ -89,26 +90,29 @@ public class CalculateDOF extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                EditText cocInput = (EditText)findViewById(R.id.dof_inputCoC);
-                String cocString = cocInput.getText().toString();
+                int inputID[] = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
+                int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
+                String values[] = new String[inputID.length];
 
-                EditText distanceInput = (EditText)findViewById(R.id.dof_inputDist);
-                String distanceString = distanceInput.getText().toString();
+                for (int i = 0; i < inputID.length; i++) {
+                    EditText input = findViewById(inputID[i]);
+                    values[i] = input.getText().toString();
+                }
 
-                EditText apertureInput = (EditText)findViewById(R.id.dof_inputAperture);
-                String apertureString = apertureInput.getText().toString();
+                String invalidMessage = validateValues(values);
+                if (invalidMessage.length() != 0) {
+                    for (int i = 0; i < 4; i++) {
+                        TextView textView = findViewById(dofTextID[i]);
+                        textView.setText(invalidMessage);
+                    }
+                    return;
+                }
 
-                validateValues(cocString, distanceString, apertureString);
-
-
-
-                double coc = Double.parseDouble(cocString);
-                double distance = Double.parseDouble(distanceString);
-                double aperture = Double.parseDouble(apertureString);
+                double coc = Double.parseDouble(values[0]);
+                double distance = Double.parseDouble(values[1]);
+                double aperture = Double.parseDouble(values[2]);
 
                 calculate(coc, distance, aperture);
-
-                int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
                 double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
 
                 for (int i = 0; i < 4; i++) {
@@ -138,7 +142,29 @@ public class CalculateDOF extends AppCompatActivity {
         }
     }
 
-    private String validateValues(String cocString, String distanceString, String apertureString) {
+    private String validateValues(String values[]) {
+        int[] invalidMessages = {R.string.invalid_coc, R.string.invalid_distance, R.string.invalid_aperture};
+        double number;
+
+        // Check if empty values
+        for (int i = 0; i<values.length; i++) {
+            if (values[i].length() == 0) {
+                return getResources().getString(R.string.invalid_values);
+            }
+        }
+
+        for (int i = 0; i<values.length; i++) {
+            try {
+                number = Double.parseDouble(values[i]);
+                Boolean[] isValidNumber = {number <= 0, number <= 0, number < 1.4};
+                if (isValidNumber[i]) {
+                    return getResources().getString(invalidMessages[i]);
+                }
+            }
+            catch (NumberFormatException e){
+                return getResources().getString(invalidMessages[i]);
+            }
+        }
 
         return "";
     }

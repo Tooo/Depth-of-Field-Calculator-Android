@@ -41,4 +41,8 @@
     <string name="circle_of_confusion_m">Circle of Confusion [m]</string>
     <string name="calculate">Calculate</string>
     <string name="backarrowdof">backarrowDoF</string>
+    <string name="invalid_coc">Invalid CoC</string>
+    <string name="invalid_distance">Invalid Distance</string>
+    <string name="invalid_aperture">Invalid Aperture</string>
+    <string name="invalid_values">Enter all values</string>
 </resources>

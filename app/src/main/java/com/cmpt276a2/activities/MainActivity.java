@@ -17,7 +17,6 @@ import com.cmpt276a2.model.Lens;
 import com.cmpt276a2.model.LensManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-
 public class MainActivity extends AppCompatActivity {
     private LensManager myLens;
 

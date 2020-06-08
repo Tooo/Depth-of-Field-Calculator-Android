@@ -82,8 +82,8 @@ public class AddLens extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                int inputID[] = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
-                String values[] = new String[inputID.length];
+                int[] inputID = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
+                String[] values = new String[inputID.length];
 
                 for (int i = 0; i < inputID.length; i++) {
                     EditText input = findViewById(inputID[i]);
@@ -113,9 +113,8 @@ public class AddLens extends AppCompatActivity {
         });
     }
 
-    private String validateValues(String values[]) {
-        String make = values[0];
-        int errorMessages[] = {R.string.error_make, R.string.error_focal_empty, R.string.error_aperture_empty};
+    private String validateValues(String[] values) {
+        int[] errorMessages = {R.string.error_make, R.string.error_focal_empty, R.string.error_aperture_empty};
 
         // Validate empty String
         for (int i = 0; i<values.length; i++) {
@@ -184,8 +183,8 @@ public class AddLens extends AppCompatActivity {
         Lens len = myLens.get(indexLen);
 
         // Load values in input
-        int inputID[] = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
-        String values[] = {len.getMake(), "" +len.getFocalLength(), "" + len.getMaxAperture()};
+        int[] inputID = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
+        String[] values = {len.getMake(), "" +len.getFocalLength(), "" + len.getMaxAperture()};
 
         for (int i = 0; i < inputID.length; i++) {
             EditText input = findViewById(inputID[i]);
