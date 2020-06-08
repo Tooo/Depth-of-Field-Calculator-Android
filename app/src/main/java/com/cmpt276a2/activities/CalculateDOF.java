@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cmpt276a2.R;
 import com.cmpt276a2.model.DOFCalculator;
@@ -39,8 +38,7 @@ public class CalculateDOF extends AppCompatActivity {
 
         setupBackButton();
         setupEditButton();
-        setupCoC();
-        setupCalculateButton();
+        setupInputs();
     }
 
     private int getLen() {
@@ -78,56 +76,29 @@ public class CalculateDOF extends AppCompatActivity {
         });
     }
 
-    private void setupCoC() {
-        EditText coCInput = (EditText)findViewById(R.id.dof_inputCoC);
-        coCInput.setText("0.029");
+    private void setupInputs() {
+        int[] inputID = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
 
-    }
+        // Input Text Watcher in all three inputs
+        for (int i = 0; i <inputID.length; i++) {
+            EditText input = findViewById(inputID[i]);
+            input.addTextChangedListener(new InputTextWatcher(input));
+        }
 
-    private void setupCalculateButton() {
-        Button btn = findViewById(R.id.dof_btnCalculate);
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                int inputID[] = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
-                int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
-                String values[] = new String[inputID.length];
-
-                for (int i = 0; i < inputID.length; i++) {
-                    EditText input = findViewById(inputID[i]);
-                    values[i] = input.getText().toString();
-                }
-
-                String invalidMessage = validateValues(values);
-                if (invalidMessage.length() != 0) {
-                    for (int i = 0; i < 4; i++) {
-                        TextView textView = findViewById(dofTextID[i]);
-                        textView.setText(invalidMessage);
-                    }
-                    return;
-                }
-
-                double coc = Double.parseDouble(values[0]);
-                double distance = Double.parseDouble(values[1]);
-                double aperture = Double.parseDouble(values[2]);
-
-                calculate(coc, distance, aperture);
-                double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
-
-                for (int i = 0; i < 4; i++) {
-                    TextView textView = findViewById(dofTextID[i]);
-                    textView.setText(formatM(calculation[i]/1000) + "m");
-                }
-
-            }
-        });
+        // Pre-fill CoC
+        EditText coCInput = findViewById(R.id.dof_inputCoC);
+        coCInput.setText(getResources().getString(R.string.coc_input));
     }
 
     // Refer to Stack Overthrow
     // https://stackoverflow.com/questions/5702771/how-to-use-single-textwatcher-for-multiple-edittexts
     private class InputTextWatcher implements TextWatcher {
 
+        private View view;
+
+        private InputTextWatcher(View view) {
+            this.view = view;
+        }
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
@@ -138,7 +109,35 @@ public class CalculateDOF extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
+            int inputID[] = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
+            int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
+            String values[] = new String[inputID.length];
 
+            for (int i = 0; i < inputID.length; i++) {
+                EditText input = findViewById(inputID[i]);
+                values[i] = input.getText().toString();
+            }
+
+            String invalidMessage = validateValues(values);
+            if (invalidMessage.length() != 0) {
+                for (int i = 0; i < 4; i++) {
+                    TextView textView = findViewById(dofTextID[i]);
+                    textView.setText(invalidMessage);
+                }
+                return;
+            }
+
+            double coc = Double.parseDouble(values[0]);
+            double distance = Double.parseDouble(values[1]);
+            double aperture = Double.parseDouble(values[2]);
+
+            calculate(coc, distance, aperture);
+            double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
+
+            for (int i = 0; i < 4; i++) {
+                TextView textView = findViewById(dofTextID[i]);
+                textView.setText(formatM(calculation[i]/1000) + "m");
+            }
         }
     }
 

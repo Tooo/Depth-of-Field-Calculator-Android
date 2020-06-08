@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageResource(currentLens.getIdIcon());
 
             // Make, Focal, Aperture
-            int itemID[] = {R.id.item_txtMake, R.id.item_txtFocal, R.id.item_txtAperture};
-            String values[] = {currentLens.getMake(), currentLens.getFocalLength() + "mm", "F"+currentLens.getMaxAperture()};
+            int[] itemID = {R.id.item_txtMake, R.id.item_txtFocal, R.id.item_txtAperture};
+            String[] values = {currentLens.getMake(), currentLens.getFocalLength() + "mm", "F"+currentLens.getMaxAperture()};
 
             for (int i = 0; i < itemID.length; i++) {
                 TextView text = itemView.findViewById(itemID[i]);
