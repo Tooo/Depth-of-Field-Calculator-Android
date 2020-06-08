@@ -28,13 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         myLens = LensManager.getInstance();
 
-        populateLenList();
         populateListView();
         setupLensClick();
         setupAddButton();
-    }
-
-    private void populateLenList() {
     }
 
     private void populateListView() {
@@ -64,17 +60,14 @@ public class MainActivity extends AppCompatActivity {
             ImageView imageView = itemView.findViewById(R.id.item_imgLen);
             imageView.setImageResource(currentLens.getIdIcon());
 
-            // Make
-            TextView makeText = itemView.findViewById(R.id.item_txtMake);
-            makeText.setText(currentLens.getMake());
+            // Make, Focal, Aperture
+            int itemID[] = {R.id.item_txtMake, R.id.item_txtFocal, R.id.item_txtAperture};
+            String values[] = {currentLens.getMake(), currentLens.getFocalLength() + "mm", "F"+currentLens.getMaxAperture()};
 
-            // Focal Length
-            TextView focalText = itemView.findViewById(R.id.item_txtFocal);
-            focalText.setText(currentLens.getFocalLength() + "mm");
-
-            // Aperture
-            TextView apertureText = itemView.findViewById(R.id.item_txtAperture);
-            apertureText.setText("F"+currentLens.getMaxAperture());
+            for (int i = 0; i < itemID.length; i++) {
+                TextView text = itemView.findViewById(itemID[i]);
+                text.setText(values[i]);
+            }
 
             return itemView;
         }

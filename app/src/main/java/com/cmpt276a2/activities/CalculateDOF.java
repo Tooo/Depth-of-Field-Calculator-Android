@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -78,6 +80,7 @@ public class CalculateDOF extends AppCompatActivity {
     private void setupCoC() {
         EditText coCInput = (EditText)findViewById(R.id.dof_inputCoC);
         coCInput.setText("0.029");
+
     }
 
     private void setupCalculateButton() {
@@ -88,14 +91,19 @@ public class CalculateDOF extends AppCompatActivity {
             public void onClick(View view) {
                 EditText cocInput = (EditText)findViewById(R.id.dof_inputCoC);
                 String cocString = cocInput.getText().toString();
-                double coc = Double.parseDouble(cocString);
 
                 EditText distanceInput = (EditText)findViewById(R.id.dof_inputDist);
                 String distanceString = distanceInput.getText().toString();
-                double distance = Double.parseDouble(distanceString);
 
                 EditText apertureInput = (EditText)findViewById(R.id.dof_inputAperture);
                 String apertureString = apertureInput.getText().toString();
+
+                validateValues(cocString, distanceString, apertureString);
+
+
+
+                double coc = Double.parseDouble(cocString);
+                double distance = Double.parseDouble(distanceString);
                 double aperture = Double.parseDouble(apertureString);
 
                 calculate(coc, distance, aperture);
@@ -110,6 +118,29 @@ public class CalculateDOF extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Refer to Stack Overthrow
+    // https://stackoverflow.com/questions/5702771/how-to-use-single-textwatcher-for-multiple-edittexts
+    private class InputTextWatcher implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    }
+
+    private String validateValues(String cocString, String distanceString, String apertureString) {
+
+        return "";
     }
 
     private void calculate(double coc, double distance, double aperture) {

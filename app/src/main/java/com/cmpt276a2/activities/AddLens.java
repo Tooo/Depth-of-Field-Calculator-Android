@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -73,7 +72,6 @@ public class AddLens extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
@@ -84,31 +82,29 @@ public class AddLens extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                int inputID[] = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
+                String values[] = new String[inputID.length];
 
-                EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
-                String make = makeInput.getText().toString();
-
-                EditText makeFocal = (EditText)findViewById(R.id.add_inputFocal);
-                String focalString = makeFocal.getText().toString();
-
-                EditText makeAperture = (EditText)findViewById(R.id.add_inputAperture);
-                String apertureString = makeAperture.getText().toString();
+                for (int i = 0; i < inputID.length; i++) {
+                    EditText input = findViewById(inputID[i]);
+                    values[i] = input.getText().toString();
+                }
 
                 // Validate values
-                String errorMessage = validateValues(make, focalString, apertureString);
+                String errorMessage = validateValues(values);
                 if (errorMessage.length() != 0) {
                     Toast.makeText(AddLens.this, errorMessage, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                int focal = Integer.parseInt(focalString);
-                double aperture = Double.parseDouble(apertureString);
+                int focal = Integer.parseInt(values[1]);
+                double aperture = Double.parseDouble(values[2]);
 
                 // New or old Lens
                 if (indexLen == -1) {
-                    myLens.add(new Lens(make, aperture, focal, iconID));
+                    myLens.add(new Lens(values[0], aperture, focal, iconID));
                 } else {
-                    saveOddLens(make, focal, aperture);
+                    saveOddLens(values[0], focal, aperture);
                 }
 
                 Intent intent = new Intent(AddLens.this, MainActivity.class);
@@ -117,19 +113,20 @@ public class AddLens extends AppCompatActivity {
         });
     }
 
-    private String validateValues(String make, String focalString, String apertureString) {
-        // Validate make
-        if (make.length() == 0 ) {
-            return getResources().getString(R.string.error_make);
+    private String validateValues(String values[]) {
+        String make = values[0];
+        int errorMessages[] = {R.string.error_make, R.string.error_focal_empty, R.string.error_aperture_empty};
+
+        // Validate empty String
+        for (int i = 0; i<values.length; i++) {
+            if (values[i].length() == 0) {
+                return getResources().getString(errorMessages[i]);
+            }
         }
 
-        // Validate focal
-        if (focalString.length() == 0 ) {
-            return getResources().getString(R.string.error_focal_empty);
-        }
-
+        // Validate Focal
         try {
-            int focal = Integer.parseInt(focalString);
+            int focal = Integer.parseInt(values[1]);
             if (focal <= 0) {
                 return getResources().getString(R.string.error_focal);
             }
@@ -138,13 +135,9 @@ public class AddLens extends AppCompatActivity {
             return getResources().getString(R.string.error_focal_string);
         }
 
-        // Validate aperture
-        if (apertureString.length() == 0 ) {
-            return getResources().getString(R.string.error_focal_empty);
-        }
-
+        // Validate Aperture
         try {
-            double aperture = Double.parseDouble(apertureString);
+            double aperture = Double.parseDouble(values[2]);
             if (aperture < 1.4 ) {
                 return getResources().getString(R.string.error_aperture);
             }
@@ -167,12 +160,13 @@ public class AddLens extends AppCompatActivity {
 
     private void setupDeleteButton() {
         ImageButton deleteButton = findViewById(R.id.add_imgbtnDelete);
+
+        // Hide Delete Button
         if (indexLen == -1) {
             deleteButton.setVisibility(View.GONE);
         }
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 // Delete Len
@@ -189,18 +183,16 @@ public class AddLens extends AppCompatActivity {
     private void loadLens() {
         Lens len = myLens.get(indexLen);
 
-        // Make
-        EditText makeInput = (EditText)findViewById(R.id.add_inputMake);
-        makeInput.setText(len.getMake());
+        // Load values in input
+        int inputID[] = {R.id.add_inputMake, R.id.add_inputFocal, R.id.add_inputAperture};
+        String values[] = {len.getMake(), "" +len.getFocalLength(), "" + len.getMaxAperture()};
 
-        // Focal
-        EditText focalInput = (EditText)findViewById(R.id.add_inputFocal);
-        focalInput.setText("" +len.getFocalLength());
+        for (int i = 0; i < inputID.length; i++) {
+            EditText input = findViewById(inputID[i]);
+            input.setText(values[i]);
+        }
 
-        // Aperture
-        EditText apertureInput = (EditText)findViewById(R.id.add_inputAperture);
-        apertureInput.setText("" + len.getMaxAperture());
-
+        // Load image and change spinner selection
         Spinner iconSpinner = findViewById(R.id.add_spinIcon);
         iconID = len.getIdIcon();
         int index = 0;
@@ -211,6 +203,5 @@ public class AddLens extends AppCompatActivity {
             }
         }
         iconSpinner.setSelection(index, false);
-
     }
 }
