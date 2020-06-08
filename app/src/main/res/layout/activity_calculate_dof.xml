@@ -110,12 +110,13 @@
         android:layout_width="176dp"
         android:layout_height="40dp"
         android:hint="@string/hint_coc"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.334" />
 
     <TextView
         android:id="@+id/dof_txtAperture"
@@ -171,9 +172,11 @@
         android:id="@+id/dof_inputDist"
         android:layout_width="189dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:hint="@string/hint_distance"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toBottomOf="@+id/dof_inputCoC" />
 
@@ -194,12 +197,13 @@
         android:layout_width="189dp"
         android:layout_height="41dp"
         android:hint="@string/hint_aperture"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toBottomOf="@+id/dof_inputDist"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/dof_txtFarFocalNum"

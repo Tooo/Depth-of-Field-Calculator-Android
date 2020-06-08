@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         populateListView();
         setupLensClick();
         setupAddButton();
+        emptyLensList();
     }
 
     private void populateListView() {
@@ -97,5 +98,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void emptyLensList() {
+        int[] textID = {R.id.main_txtEmpty, R.id.main_txtInstructions};
+        int view;
+
+        // Select Lens
+        TextView textSelect= findViewById(R.id.main_txtSelectLens);
+        if (myLens.size() == 0) {
+            textSelect.setVisibility(View.GONE);
+            view = View.VISIBLE;
+        } else {
+            textSelect.setVisibility(View.VISIBLE);
+            view = View.GONE;
+        }
+
+        // Empty and Instructions
+        for (int value:textID) {
+            TextView text = findViewById(value);
+            text.setVisibility(view);
+        }
     }
 }

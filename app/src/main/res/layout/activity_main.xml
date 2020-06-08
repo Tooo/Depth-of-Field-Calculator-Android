@@ -71,6 +71,27 @@
         app:srcCompat="@drawable/ic_plus_yellow" />
 
     <TextView
+        android:id="@+id/main_txtEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_txtSelectLens" />
+
+    <TextView
+        android:id="@+id/main_txtInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_txtEmpty" />
+
+    <TextView
         android:id="@+id/main_txtFeatures"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

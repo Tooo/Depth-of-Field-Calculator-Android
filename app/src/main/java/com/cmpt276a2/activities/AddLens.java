@@ -32,17 +32,11 @@ public class AddLens extends AppCompatActivity {
 
         myLens = LensManager.getInstance();
 
-        Intent intent = getIntent();
-        indexLen = intent.getIntExtra("indexLen", 0);
-
         setupBackButton();
         setupIconSelector();
         setupSaveButton();
         setupDeleteButton();
-
-        if (indexLen >= 0 && indexLen < myLens.size()) {
-            loadLens();
-        }
+        loadLen();
     }
 
     private void setupBackButton() {
@@ -176,10 +170,15 @@ public class AddLens extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-    private void loadLens() {
+    private void loadLen() {
+        Intent intent = getIntent();
+        indexLen = intent.getIntExtra("indexLen", 0);
+        if (indexLen < 0 || indexLen >= myLens.size()) {
+            return;
+        }
+
         Lens len = myLens.get(indexLen);
 
         // Load values in input
