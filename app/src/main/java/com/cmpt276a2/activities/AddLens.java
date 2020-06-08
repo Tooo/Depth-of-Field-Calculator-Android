@@ -40,7 +40,7 @@ public class AddLens extends AppCompatActivity {
         setupSaveButton();
         setupDeleteButton();
 
-        if (indexLen != -1) {
+        if (indexLen >= 0 && indexLen < myLens.size()) {
             loadLens();
         }
     }

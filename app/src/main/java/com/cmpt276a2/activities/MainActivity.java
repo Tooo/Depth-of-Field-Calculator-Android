@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void populateListView() {
         ArrayAdapter<Lens> adapter = new MyListAdapter();
-        ListView list = (ListView) findViewById((R.id.main_listLens));
+        ListView list = findViewById((R.id.main_listLens));
         list.setAdapter(adapter);
     }
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupLensClick() {
-        ListView list = (ListView) findViewById(R.id.main_listLens);
+        ListView list = findViewById(R.id.main_listLens);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {

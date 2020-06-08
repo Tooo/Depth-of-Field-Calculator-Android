@@ -2,12 +2,12 @@ package com.cmpt276a2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -45,7 +45,7 @@ public class CalculateDOF extends AppCompatActivity {
         Intent intent = getIntent();
         int indexLen = intent.getIntExtra("indexLen", 0);
 
-        TextView textView = (TextView) findViewById(R.id.dof_txtLen);
+        TextView textView = findViewById(R.id.dof_txtLen);
         String lenString = myLens.get(indexLen).toString();
         textView.setText(lenString);
         return indexLen;
@@ -80,9 +80,9 @@ public class CalculateDOF extends AppCompatActivity {
         int[] inputID = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
 
         // Input Text Watcher in all three inputs
-        for (int i = 0; i <inputID.length; i++) {
-            EditText input = findViewById(inputID[i]);
-            input.addTextChangedListener(new InputTextWatcher(input));
+        for (int value : inputID) {
+            EditText input = findViewById(value);
+            input.addTextChangedListener(new InputTextWatcher());
         }
 
         // Pre-fill CoC
@@ -94,10 +94,7 @@ public class CalculateDOF extends AppCompatActivity {
     // https://stackoverflow.com/questions/5702771/how-to-use-single-textwatcher-for-multiple-edittexts
     private class InputTextWatcher implements TextWatcher {
 
-        private View view;
-
-        private InputTextWatcher(View view) {
-            this.view = view;
+        private InputTextWatcher() {
         }
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -107,11 +104,12 @@ public class CalculateDOF extends AppCompatActivity {
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
 
+        @SuppressLint("SetTextI18n")
         @Override
         public void afterTextChanged(Editable editable) {
-            int inputID[] = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
-            int dofTextID[] = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
-            String values[] = new String[inputID.length];
+            int[] inputID = {R.id.dof_inputCoC, R.id.dof_inputDist, R.id.dof_inputAperture};
+            int[] dofTextID = {R.id.dof_txtNearFocalNum, R.id.dof_txtFarFocalNum, R.id.dof_txtHyperNum, R.id.dof_txtDoFNum};
+            String[] values = new String[inputID.length];
 
             for (int i = 0; i < inputID.length; i++) {
                 EditText input = findViewById(inputID[i]);
@@ -132,7 +130,7 @@ public class CalculateDOF extends AppCompatActivity {
             double aperture = Double.parseDouble(values[2]);
 
             calculate(coc, distance, aperture);
-            double calculation[] = {nearFocal, farFocal, hyperFocal, depthOfField};
+            double[] calculation = {nearFocal, farFocal, hyperFocal, depthOfField};
 
             for (int i = 0; i < 4; i++) {
                 TextView textView = findViewById(dofTextID[i]);
@@ -141,13 +139,13 @@ public class CalculateDOF extends AppCompatActivity {
         }
     }
 
-    private String validateValues(String values[]) {
+    private String validateValues(String[] values) {
         int[] invalidMessages = {R.string.invalid_coc, R.string.invalid_distance, R.string.invalid_aperture};
         double number;
 
         // Check if empty values
-        for (int i = 0; i<values.length; i++) {
-            if (values[i].length() == 0) {
+        for (String value : values) {
+            if (value.length() == 0) {
                 return getResources().getString(R.string.invalid_values);
             }
         }

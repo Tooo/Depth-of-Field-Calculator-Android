@@ -18,7 +18,7 @@
         <!--Add Lens class-->
     <string name="error_make">Error: Make is empty</string>
     <string name="error_focal_empty">Error: Focal Length is empty</string>
-    <string name="error_focal_string">Error: Focal Length needs to be a number</string>
+    <string name="error_focal_string">Error: Focal Length needs to be a integer</string>
     <string name="error_focal">Error: Focal Length needs to be a positive number</string>
     <string name="error_aperture_empty">Error: Aperture is empty</string>
     <string name="error_aperture_string">Error: Aperture needs to be a number</string>
@@ -45,4 +45,5 @@
     <string name="invalid_aperture">Invalid Aperture</string>
     <string name="invalid_values">Enter all values</string>
     <string name="coc_input">0.029</string>
+    <string name="features">Features\n1. App Bar Button\n2. Edit and Delete Lens\n3. Error Checking Inputs\n4. Auto-recalculate\n6. Lens Icon</string>
 </resources>
