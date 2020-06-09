@@ -150,10 +150,14 @@ public class CalculateDOF extends AppCompatActivity {
             }
         }
 
+        // Check aperture < Max Aperture
+        Lens len = myLens.get(indexLen);
+        double maxAperture = len.getMaxAperture();
+
         for (int i = 0; i<values.length; i++) {
             try {
                 number = Double.parseDouble(values[i]);
-                Boolean[] isValidNumber = {number <= 0, number <= 0, number < 1.4};
+                Boolean[] isValidNumber = {number <= 0, number <= 0, number < 1.4 || number < maxAperture};
                 if (isValidNumber[i]) {
                     return getResources().getString(invalidMessages[i]);
                 }

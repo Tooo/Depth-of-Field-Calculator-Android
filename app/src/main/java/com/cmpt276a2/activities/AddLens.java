@@ -35,8 +35,8 @@ public class AddLens extends AppCompatActivity {
         setupBackButton();
         setupIconSelector();
         setupSaveButton();
-        setupDeleteButton();
         loadLen();
+        setupDeleteButton();
     }
 
     private void setupBackButton() {

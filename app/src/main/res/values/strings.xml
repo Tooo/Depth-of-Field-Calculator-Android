@@ -8,7 +8,7 @@
         1. Press the add button on the bottom right.\n
         2. Fill in the make, focal length, and max aperture.\n
         3. Once completed, press the save button on the top right.</string>
-    <string name="features">Features\n
+    <string name="features">Optional Features\n
         1. App Bar Button\n
         2. Edit/Delete Lens (Delete shown when editing)\n
         3. Error Checking Inputs (Also forced input types)\n
