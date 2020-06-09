@@ -24,10 +24,10 @@
         android:background="@null"
         android:contentDescription="@string/backarrowdof"
         app:layout_constraintBottom_toBottomOf="@+id/dof_tool"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/dof_tool"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dof_tool"
+        app:layout_constraintTop_toTopOf="@id/dof_tool"
         app:srcCompat="@drawable/ic_arrowback_blue" />
 
     <ImageButton
@@ -37,10 +37,10 @@
         android:background="@null"
         android:contentDescription="@string/backarrowdof"
         app:layout_constraintBottom_toBottomOf="@+id/dof_tool"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/dof_tool"
         app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/dof_tool"
+        app:layout_constraintTop_toTopOf="@id/dof_tool"
         app:srcCompat="@drawable/ic_edit_blue" />
 
     <TextView
@@ -67,19 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
-
-    <TextView
-        android:id="@+id/dof_txtHyperNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hyperfocal"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
 
     <TextView
         android:id="@+id/dof_txtFarFocal"
@@ -143,19 +130,6 @@
         app:layout_constraintVertical_bias="0.337" />
 
     <TextView
-        android:id="@+id/dof_txtDoFNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/depth_of_field"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188" />
-
-    <TextView
         android:id="@+id/dof_txtPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -206,19 +180,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/dof_txtFarFocalNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/far_focal"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
-
-    <TextView
         android:id="@+id/dof_txtHyper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -231,18 +192,6 @@
         app:layout_constraintVertical_bias="0.233" />
 
     <TextView
-        android:id="@+id/dof_txtLen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/len"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="@+id/rightLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
-
-    <TextView
         android:id="@+id/dof_txtNearFocalNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -250,10 +199,61 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rightLine"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/dof_txtLen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/len"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/dof_txtHyperNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyperfocal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.231" />
+
+    <TextView
+        android:id="@+id/dof_txtDoFNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/depth_of_field"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.187" />
+
+    <TextView
+        android:id="@+id/dof_txtFarFocalNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/far_focal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rightLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftLine"
