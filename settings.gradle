@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "cmpt276A2"
+rootProject.name = "Depth-of-Field-Calculator-Android"
