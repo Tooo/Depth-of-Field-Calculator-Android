@@ -24,9 +24,9 @@ https://github.com/Toooo123/Depth-of-Field-Calculator-Android.git
 ## Screenshots
 <table>
   <tr>
-    <td> <img src="Images/MainActivity.png"> </td>
-    <td> <img src="Images/CalculateDOF.png"> </td>
-    <td> <img src="Images/AddLens.png">      </td>
+    <td> <img src="images/MainActivity.png"> </td>
+    <td> <img src="images/CalculateDOF.png"> </td>
+    <td> <img src="images/AddLens.png">      </td>
   </tr>
   <tr>
     <td> Lens List Screen </td>
