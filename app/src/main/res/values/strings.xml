@@ -57,4 +57,5 @@
     <string name="invalid_aperture">Invalid Aperture</string>
     <string name="invalid_values">Enter all values</string>
     <string name="coc_input">0.029</string>
+    <string name="add">add</string>
 </resources>
