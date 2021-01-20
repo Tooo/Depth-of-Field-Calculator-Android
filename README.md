@@ -29,7 +29,7 @@ https://github.com/Toooo123/Depth-of-Field-Calculator-Android.git
     <td> <img src="Images/AddLens.png">      </td>
   </tr>
   <tr>
-    <td> Lens list Screen </td>
+    <td> Lens List Screen </td>
     <td> Calculating Depth of Field Screen </td>
     <td> Adding/Editing Lens Screen </td>
   </tr>
