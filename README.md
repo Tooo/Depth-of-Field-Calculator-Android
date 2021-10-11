@@ -11,7 +11,7 @@ It will output the focus distance range, depth of field distance, and hyperfocal
 2. Click "Get From Version Control"
 3. Insert the following URL:
 ```
-https://github.com/Toooo123/Depth-of-Field-Calculator-Android.git
+https://github.com/Tooo/Depth-of-Field-Calculator-Android.git
 ```
 4. Run app on either an Android Emulator or your phone plugged into your computer
 
